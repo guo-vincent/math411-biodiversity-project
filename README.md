@@ -10,15 +10,15 @@ Evenness: degree of distribution of species.
 
 Suppose we are dealing with an ecosystem housing species A to I.
 
-Species A: 1
-Species B: 2
-Species C: 3
-Species D: 4
-Species E: 5
-Species F: 6
-Species G: 7
-Species H: 8
-Species I: 99999
+- Species A: 1
+- Species B: 2
+- Species C: 3
+- Species D: 4
+- Species E: 5
+- Species F: 6
+- Species G: 7
+- Species H: 8
+- Species I: 99999
 
 This ecosystem is rich, with 9 distinct species. But one species overly dominates the distribution of individuals, making this ecosystem not even.
 
@@ -26,8 +26,8 @@ This ecosystem is rich, with 9 distinct species. But one species overly dominate
 
 Now suppose we are dealing with an ecosystem housing only 2 species: A and B.
 
-Species A: 99
-Species B: 99
+- Species A: 99
+- Species B: 99
 
 This ecosystem is even. Both species A and species B have equal numbers of individuals. But there are only 2 species, making this ecosystem not rank high in richness.
 
