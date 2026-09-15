@@ -32,14 +32,14 @@ Now suppose we are dealing with an ecosystem housing only 2 species: A and B.
 This ecosystem is even. Both species A and species B have equal numbers of individuals. But there are only 2 species, making this ecosystem not rank high in richness.
 
 ## 2. Find P(2 Seal Salamanders chosen w/o replacement)
-(6/11) * (5/10) = 3/11.
-
-The probability is 3/11.
-
-## 3. Find P(2 Imitator Salamanders chosen w/o replacement)
 (5/11) * (4/10) = 2/11.
 
 The probability is 2/11.
+
+## 3. Find P(2 Imitator Salamanders chosen w/o replacement)
+(6/11) * (5/10) = 3/11.
+
+The probability is 3/11.
 
 ## 4. Find P(2 of the same species)
 2/11 + 3/11 = 5/11.
