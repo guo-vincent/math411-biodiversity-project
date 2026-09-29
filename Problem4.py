@@ -69,9 +69,9 @@ for S in (2, 3, 5, 10, 50):
 
 ax2.set_xscale("log")
 ax2.set_xlabel("n  (individuals per species)")
-ax2.set_ylabel("1 - D")
+ax2.set_ylabel("SID (1 - D)")
 ax2.set_ylim(0, 1.02)
-ax2.set_title("Each curve saturates at its ceiling 1 - 1/S (dotted)")
+ax2.set_title("Fixed S: Each curve saturates at its floor 1 - 1/S (evenness)")
 ax2.legend()
 fig2.tight_layout()
 
@@ -88,9 +88,9 @@ ax3.axhline(1.0, color="grey", lw=0.8, ls=":")   # the limit as S -> infinity
 
 ax3.set_xscale("log")
 ax3.set_xlabel("S  (number of species)")
-ax3.set_ylabel("1 - D")
+ax3.set_ylabel("SID (1 - D)")
 ax3.set_ylim(0, 1.02)
-ax3.set_title("Fixed n: 1 - D approaches 1 as S grows (richness)")
+ax3.set_title("Fixed n: SID approaches 1 as S grows (richness)")
 ax3.legend()
 fig3.tight_layout()
 
