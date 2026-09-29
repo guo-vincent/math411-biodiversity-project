@@ -43,6 +43,45 @@ surf = ax.plot_surface(
     rstride=1, cstride=1, linewidth=0, antialiased=True,
 )
 
+# ---- Red N = Sn line ----
+N_target = 1000
+
+fig = plt.figure(figsize=(9, 7))
+ax = fig.add_subplot(projection="3d", computed_zorder=False)
+surf = ax.plot_surface(
+    np.log10(SS), np.log10(NN), Z,
+    cmap="viridis", vmin=0, vmax=1,
+    rstride=1, cstride=1, linewidth=0, antialiased=True,
+    zorder=1,
+)
+
+logN = np.log10(N_target)
+lo, hi = max(0.0, logN - 3.0), min(3.0, logN)
+if lo >= hi:
+    raise ValueError(f"N = {N_target:,} doesn't cross the plotted range (N must be between 1 and 1,000,000).")
+
+logS_line = np.linspace(lo, hi, 400)
+S_curve = 10 ** logS_line
+n_curve = N_target / S_curve
+Z_curve = simpson_even(S_curve, n_curve)
+
+ax.plot(
+    logS_line, np.log10(n_curve), Z_curve,
+    color="red", lw=3.5, zorder=10,
+    label=f"N = S x n = {N_target:,}",
+)
+
+# ---- Text label sitting on the line ----
+label_frac = 0.2 
+i = int(label_frac * (len(logS_line) - 1))
+ax.text(
+    logS_line[i], np.log10(n_curve[i]), Z_curve[i] + 0.04,
+    f"N = {N_target:,}",
+    color="red", fontsize=12, fontweight="bold", ha="center", va="bottom",
+    bbox=dict(boxstyle="round,pad=0.25", facecolor="white", edgecolor="red", alpha=0.9),
+    zorder=11,
+)
+
 for axis, setter, labeller in (
     (ax.xaxis, ax.set_xticks, ax.set_xticklabels),
     (ax.yaxis, ax.set_yticks, ax.set_yticklabels),
