@@ -81,7 +81,7 @@ fig3, ax3 = plt.subplots(figsize=(8, 5))
 # integer S values, log-spaced, 1 .. 10,000
 S_line = np.unique(np.logspace(0, 4, 400).round().astype(int))
 
-for n in (2, 3, 5, 10, 100):
+for n in (2, 3, 5, 10, 50):
     ax3.plot(S_line, simpson_even(S_line, n), label=f"n = {n}")
 
 ax3.axhline(1.0, color="grey", lw=0.8, ls=":")   # the limit as S -> infinity
