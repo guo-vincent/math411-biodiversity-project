@@ -25,6 +25,8 @@ def simpson_even(S, n):
     return np.where(N >= 2, out, np.nan)
 
 
+# ------------------------ First plot (combined) ------------------------
+
 for _S, _n in [(1, 10), (3, 7), (25, 4), (100, 100)]:
     assert np.isclose(simpson_even(_S, _n), simpson_index(np.full(_S, _n)))
 
@@ -57,6 +59,8 @@ ax.view_init(elev=22, azim=-125)
 fig.colorbar(surf, shrink=0.6, pad=0.12, label="1 - D")
 fig.subplots_adjust(left=0.02, right=0.92, bottom=0.05, top=0.95)
 
+# ------------------------ Second plot (Selected S values) ------------------------
+
 fig2, ax2 = plt.subplots(figsize=(8, 5))
 n_line = np.logspace(0, 4, 400)
 for S in (2, 3, 5, 10, 50):
@@ -70,5 +74,24 @@ ax2.set_ylim(0, 1.02)
 ax2.set_title("Each curve saturates at its ceiling 1 - 1/S (dotted)")
 ax2.legend()
 fig2.tight_layout()
+
+# ------------------------ Third plot (Selected N values) ------------------------
+fig3, ax3 = plt.subplots(figsize=(8, 5))
+
+# integer S values, log-spaced, 1 .. 10,000
+S_line = np.unique(np.logspace(0, 4, 400).round().astype(int))
+
+for n in (2, 3, 5, 10, 100):
+    ax3.plot(S_line, simpson_even(S_line, n), label=f"n = {n}")
+
+ax3.axhline(1.0, color="grey", lw=0.8, ls=":")   # the limit as S -> infinity
+
+ax3.set_xscale("log")
+ax3.set_xlabel("S  (number of species)")
+ax3.set_ylabel("1 - D")
+ax3.set_ylim(0, 1.02)
+ax3.set_title("Fixed n: 1 - D approaches 1 as S grows (richness)")
+ax3.legend()
+fig3.tight_layout()
 
 plt.show()
